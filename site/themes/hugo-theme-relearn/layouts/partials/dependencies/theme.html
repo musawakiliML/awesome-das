@@ -1,0 +1,134 @@
+{{- $page := .page }}
+{{- $location := .location }}
+
+{{- if eq $location "default" }}
+  {{- with $page }}
+    {{- .Store.Set "needsTheme" true }}
+  {{- end }}
+{{- else if eq $location "header" }}
+  {{- with $page }}
+    {{- $outputFormat := "html" }}
+    {{- with .Store.Get "relearnOutputFormat" }}
+      {{- $outputFormat = . }}
+    {{- else }}
+      {{- warnf "WARNING no key `relearnOutputFormat` found in page store; define a block `storeOutputFormat` for your HTML based output format templates and add `{{- .Store.Set \"relearnOutputFormat\" \"<your-output-format-name>\" }}`; see https://mcshelby.github.io/hugo-theme-relearn/introduction/releasenotes/8/#8-0-0" }}
+    {{- end }}
+    {{- $themevariantsdata := partialCached "_relearn/themeVariants.gotmpl" site.Home }}
+    {{- $themevariants := $themevariantsdata.variants }}
+    {{- $css := $themevariantsdata.css }}
+    {{- $quotedthemevariants := slice }}
+    {{- range $themevariants }}
+      {{- if not .hidden }}
+        {{- $quotedthemevariants = $quotedthemevariants | append (printf "'%s'" .identifier) }}
+      {{- end }}
+    {{- end }}
+    {{- $wrap := true }}
+    {{- if isset site.Params "highlightwrap" }}
+      {{- $wrap = site.Params.highlightWrap  }}
+    {{- end }}
+    {{- if isset .Params "highlightwrap" }}
+      {{- $wrap = .Params.highlightWrap }}
+    {{- end }}
+    {{- $disableInlineCopyToClipboard := site.Params.disableInlineCopyToClipBoard }}
+    {{- /* https://github.com/filamentgroup/loadCSS/blob/master/README.md#how-to-use */}}
+    {{- with partial "asset.gotmpl" "/fonts/fontawesome/css/all.min.css" }}
+      {{- $url := .RelPermalink }}
+    <link href="{{ $url }}" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="{{ $url }}" rel="stylesheet"></noscript>
+    {{- end }}
+    <link href="{{ $css.theme }}" rel="stylesheet">
+    <link href="{{ index $css (printf "format-%s" $outputFormat) }}" rel="stylesheet" id="R-format-style">
+    {{- $versionIndexUrl := "" }}
+    {{- $versions := partialCached "_relearn/siteVersions.gotmpl" site.Home }}
+    {{- if $versions }}
+      {{- $versionIndexUrl = trim (or site.Params.versionIndexURL "versionindex.js") "/" }}
+      {{- $versionIndexUrl = path.Join (path.Dir $versionIndexUrl) (print (path.BaseName $versionIndexUrl) "." site.Language.Lang (path.Ext $versionIndexUrl)) }}
+      {{- if .IsHome }}
+        {{- $templateres := resources.Get "/_relearn_versionindex.js" }}
+        {{- $resultres := $templateres | resources.ExecuteAsTemplate $versionIndexUrl site.Home }}
+        {{- /* the following code causes Hugo to generate our file in public */}}
+        {{- $url := $resultres.RelPermalink }}
+      {{- end }}
+      {{- with (where $versions "isLatest" true | first 1) }}
+        {{- range . }}
+          {{- $versionIndexUrl = print .baseURL "/" $versionIndexUrl }}
+        {{- end }}
+      {{- end }}
+    {{- end }}
+    {{- $path := partial "_relearn/pageLangPath.gotmpl" . }}
+    <script>
+      window.relearn = window.relearn || {};
+      {{ "// configuration" | safeJS }}
+      window.relearn.path='{{ $path | safeJS }}';
+      window.relearn.relBasePath='{{ partial "_relearn/relBasePath.gotmpl" . | safeJS }}';
+      window.relearn.relBaseUri='{{ partial "_relearn/relBaseUri.gotmpl" . | safeJS }}';
+      window.relearn.absBaseUri='{{ replaceRE "/*$" "" site.BaseURL | safeJS }}';
+      {{- if $versionIndexUrl }}
+      {{- /* no cache busting: this URL points into the latest version's build, so its hash is unknowable from here and a build time id would pin the very file that must change */}}
+      window.relearn.version_js_url={{ $versionIndexUrl | relURL }};
+      {{- end }}
+      window.relearn.disableInlineCopyToClipboard={{ printf "%t" (eq $disableInlineCopyToClipboard true) | safeJS }};
+      window.relearn.enableBlockCodeWrap={{ printf "%t" (eq $wrap true) | safeJS }};
+      {{ "// translations" | safeJS }}
+      {{ printf "window.T_Copy_to_clipboard = `%s`;" (T `Copy-to-clipboard`) | safeJS }}
+      {{ printf "window.T_Copied_to_clipboard = `%s`;" (T `Copied-to-clipboard`) | safeJS }}
+      {{ printf "window.T_Link_copied_to_clipboard = `%s`;" (T `Link-copied-to-clipboard`) | safeJS }}
+      {{ printf "window.T_Reset_view = `%s`;" (T `Reset-view`) | safeJS }}
+      {{ printf "window.T_View_reset = `%s`;" (T `View-reset`) | safeJS }}
+      {{ printf "window.T_No_results_found = `%s`;" (T "No-results-found") | safeJS }}
+      {{ printf "window.T_N_results_found = `%s`;" (T "N-results-found") | safeJS }}
+      {{ printf "window.T_Browser_unsupported_feature = `%s`;" (T "Browser-unsupported-feature") | safeJS }}
+      {{ "// variant stuff" | safeJS }}
+      window.relearn.themevariants = [ {{ delimit $quotedthemevariants ", " | safeJS }} ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+      {{- /* the browsers scrollbar style has to be known before the first paint; measuring it in
+             theme.js would leave the menu with a space taking scrollbar - clipping its border and
+             the active entry - for as long as the scripts loaded before it take to run */}}
+      window.relearn.scrollbarSize = (function() {
+        {{- /* https://davidwalsh.name/detect-scrollbar-width; we run in the head, so there is no body yet */}}
+        var scrollDiv = document.createElement('div');
+        scrollDiv.className = 'scrollbar-measure';
+        var parent = document.body || document.documentElement;
+        parent.appendChild(scrollDiv);
+        var size = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+        parent.removeChild(scrollDiv);
+        return size;
+      })();
+      if (window.relearn.scrollbarSize) {
+        {{- /* classic scrollbars take away space, overlay scrollbars - measuring zero - don't;
+               only in the first case the menu has to draw its scrollbar itself */}}
+        document.documentElement.classList.add('classic-scrollbars');
+      }
+    </script>
+  {{- end }}
+{{- else if eq $location "footer" }}
+  {{- with $page }}
+    {{- with partial "asset.gotmpl" "/js/theme.js" }}
+    <script src="{{ .RelPermalink }}" defer></script>
+    {{- end }}
+  {{- end }}
+{{- end }}

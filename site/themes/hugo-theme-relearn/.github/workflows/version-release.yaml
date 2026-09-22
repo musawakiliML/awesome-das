@@ -1,0 +1,96 @@
+name: version-release
+
+# On main this performs a full release.
+#
+# On any other branch it runs everything that is safe to repeat - tests,
+# documentation build, artifact upload - and skips the steps that mutate the world:
+# tagging, committing, publishing and deployment. The built site is uploaded as an
+# artifact either way, so a release can be rehearsed and its output inspected
+# before it is made for real.
+
+on:
+  workflow_dispatch:
+    inputs:
+      milestone:
+        description: 'Milestone for this release (required on main, ignored elsewhere)'
+        required: false
+
+# Declared rather than inherited. A release commits back to the branch, creates
+# a tag and a GitHub release, and pushes `gh-pages`; it also closes the milestone
+# it releases and opens the next patch one, which is a write to issues and not
+# just a read. A repository whose default token is read-only would fail all of
+# that.
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  # A release must not happen on a red suite.
+  test:
+    name: Run tests
+    uses: ./.github/workflows/test-execution.yaml
+
+  release:
+    name: Run release
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          # fetch-depth: 0   # Fetch all history for .GitInfo and .Lastmod - not necessary for this repo
+
+      # Owns the branch rule: `success` only on main with a releasable
+      # milestone, `skipped` on any other branch, and a non-zero exit when the
+      # milestone is not releasable. Nothing below needs to know about
+      # branches - it all keys off this one outcome.
+      - name: Check milestone
+        id: check
+        uses: ./.github/actions/check-milestone
+        with:
+          milestone: ${{ github.event.inputs.milestone }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create release
+        if: ${{ steps.check.outputs.outcome == 'success' }}
+        uses: ./.github/actions/release-milestone
+        with:
+          milestone: ${{ github.event.inputs.milestone }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      # We need to deploy the site again to show the updated changelog
+      - name: Build site
+        uses: ./.github/actions/build-site
+
+      # build-site writes outside the workspace; stage it somewhere predictable
+      # rather than relying on the uploader to accept a path above the root.
+      #
+      # These two steps come before the deployment so that a failed deploy
+      # still leaves an artifact to inspect. They are continue-on-error
+      # because the reverse must not hold: steps carry an implicit success(),
+      # so without it a flaky upload would skip the deployment - and by this
+      # point the release is already tagged, committed and published, so that
+      # would strand a completed release behind a stale site.
+      - name: Stage the built site artifact
+        continue-on-error: true
+        shell: bash
+        run: cp -r "${GITHUB_WORKSPACE}/../public" "${RUNNER_TEMP}/site"
+
+      # The workflow name keeps archives from the two publishing workflows
+      # apart on disk. The run number is the value shown in the Actions UI;
+      # the run id is the one in the run's URL, so an archive can be traced
+      # straight back to github.com/.../actions/runs/<run id>.
+      - name: Upload the built site artifact
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.workflow }}-${{ github.run_number }}-${{ github.run_id }}
+          path: ${{ runner.temp }}/site
+          retention-days: 30
+
+      # No condition needed: deploy-site publishes from main and nowhere else.
+      - name: Deploy site
+        uses: ./.github/actions/deploy-site
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
