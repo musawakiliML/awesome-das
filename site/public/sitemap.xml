@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>//localhost:1313/</loc>
+  </url><url>
+    <loc>//localhost:1313/resources/applications/</loc>
+  </url><url>
+    <loc>//localhost:1313/resources/books-and-courses/</loc>
+  </url><url>
+    <loc>//localhost:1313/resources/data-formats/</loc>
+  </url><url>
+    <loc>//localhost:1313/resources/datasets/</loc>
+  </url><url>
+    <loc>//localhost:1313/resources/fundamentals/</loc>
+  </url><url>
+    <loc>//localhost:1313/resources/machine-learning/</loc>
+  </url><url>
+    <loc>//localhost:1313/resources/miscelleneous/</loc>
+  </url><url>
+    <loc>//localhost:1313/resources/organizations-and-commuties/</loc>
+  </url><url>
+    <loc>//localhost:1313/resources/papers/</loc>
+  </url><url>
+    <loc>//localhost:1313/resources/seismology/</loc>
+  </url><url>
+    <loc>//localhost:1313/resources/software-and-libraries/</loc>
+  </url><url>
+    <loc>//localhost:1313/resources/volcanology/</loc>
+  </url><url>
+    <loc>//localhost:1313/categories/</loc>
+  </url><url>
+    <loc>//localhost:1313/resources/</loc>
+  </url><url>
+    <loc>//localhost:1313/tags/</loc>
+  </url>
+</urlset>

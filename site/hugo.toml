@@ -1,4 +1,8 @@
-baseURL = 'https://example.org/'
-languageCode = 'en-us'
+locale = 'en-us'
 title = 'Awesome DAS'
+[params]
+    subtitle = 'A curated collection of resources for Distributed Acoustic Sensing (DAS).'
+    [params.contact]
+        email = 'musaadamuw.wakili@pg.canterbury.ac.nz'
+        phone = '+6421445412'
 theme = 'hugo-theme-relearn'
