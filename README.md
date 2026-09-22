@@ -145,7 +145,7 @@ If you are specifically interested in DAS for volcano monitoring, continue with:
 
 ---
 
-# Resources
+## Resources
 
 ## Fundamentals
 
@@ -432,3 +432,78 @@ You can contribute by:
 - Improving the documentation
 
 Before contributing, please read [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+---
+
+## Repository Structure
+
+``` markdown
+awesome-das/
+│
+├── resources/       # Curated DAS resources
+├── templates/       # Templates for adding resources
+├── .github/         # GitHub contribution templates
+├── site/            # Future Hugo website
+│
+├── README.md
+├── CONTRIBUTING.md
+├── CODE_OF_CONDUCT.md
+└── LICENSE
+```
+
+The repository is intentionally separated from personal research notes.
+
+Personal research notes, experiments, literature reviews, and research ideas belong in a research notebook rather than this repository.
+
+Awesome DAS focuses on **curated resources that are broadly useful to the DAS community**.
+
+---
+
+## Roadmap
+
+- Create the initial repository
+
+- Establish the resource taxonomy
+
+- Add foundational DAS resources
+
+- Curate important DAS papers
+
+- Curate public DAS datasets
+
+- Curate DAS software and libraries
+
+- Add DAS data formats and interoperability resources
+
+- Build a DAS learning path
+
+- Establish community contribution guidelines
+
+- Build the Awesome DAS website with Hugo
+
+- Add search and filtering
+
+- Add resource metadata
+
+- Grow community contributions
+
+---
+
+## Acknowledgements
+
+Awesome DAS builds upon the work of researchers, engineers, developers, institutions, and open-source communities working in Distributed Acoustic Sensing and related fields.
+
+If you find a resource here useful, please consider supporting the original authors and projects.
+
+---
+
+## License
+
+This project is released under the [MIT License](./LICENSE).
+
+Individual resources referenced by this repository remain subject to their respective licenses and copyrights.
+
+---
+
+**Awesome DAS**  
+_Learn. Research. Build. Share._
