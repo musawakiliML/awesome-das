@@ -144,3 +144,366 @@ If you are specifically interested in DAS for volcano monitoring, continue with:
 - [Applications](./site/content/resources/applications.md)
 
 ---
+
+## Resources
+
+## Fundamentals
+
+Resources for understanding the principles behind Distributed Acoustic Sensing, fiber-optic sensing, interrogators, gauge length, spatial sampling, temporal sampling, strain and strain rate, coupling, and DAS system design.
+
+See [Fundamentals](./site/content/resources/fundamentals.md).
+
+---
+
+## Books & Courses
+
+Books, courses, lecture notes, tutorials, and other structured learning materials related to DAS and its supporting disciplines.
+
+See [Books & Courses](./site/content/resources/books-and-courses.md).
+
+---
+
+## Research Papers
+
+Important and useful research papers covering DAS theory, methodology, instrumentation, processing, applications, and emerging research directions.
+
+See [Research Papers](./site/content/resources/papers.md).
+
+---
+
+## Datasets
+
+Publicly available DAS datasets that can be used for:
+
+- Research
+
+- Education
+
+- Benchmarking
+
+- Algorithm development
+
+- Machine learning
+
+- Signal processing
+
+- Reproducibility
+
+See [Datasets](./site/content/resources/datasets.md).
+
+---
+
+## Software & Libraries
+
+Open-source and publicly available software for:
+
+- DAS data loading
+
+- Data conversion
+
+- Signal processing
+
+- Visualization
+
+- Event detection
+
+- Localization
+
+- Machine learning
+
+- Data analysis
+
+See [Software & Libraries](./site/content/resources/software-and-libraries.md).
+
+---
+
+## Data Formats
+
+Resources covering DAS data formats, standards, schemas, interoperability, metadata, and tools for reading or converting DAS data.
+
+See [Data Formats](./site/content/resources/data-formats.md).
+
+---
+
+## Machine Learning
+
+Resources covering the use of machine learning and artificial intelligence with DAS data.
+
+Topics include:
+
+- Event detection
+
+- Classification
+
+- Clustering
+
+- Anomaly detection
+
+- Localization
+
+- Denoising
+
+- Representation learning
+
+- CNNs
+
+- Transformers
+
+- Autoencoders
+
+- Self-supervised learning
+
+- Foundation models
+
+See [Machine Learning](./site/content/resources/machine-learning.md).
+
+---
+
+## Seismology
+
+Resources for understanding seismic signals and methods relevant to DAS.
+
+Topics include:
+
+- Seismic waves
+
+- Earthquake seismology
+
+- Signal processing
+
+- Seismic event detection
+
+- Array processing
+
+- Seismic phase identification
+
+- Location methods
+
+- Ambient noise
+
+- Wave propagation
+
+See [Seismology](./site/content/resources/seismology.md).
+
+---
+
+## Volcanology
+
+Resources focused on volcano monitoring and volcanic processes where DAS can provide useful observations.
+
+Topics include:
+
+- Volcano seismology
+
+- Volcanic earthquakes
+
+- Tremor
+
+- Eruption monitoring
+
+- Hydrothermal systems
+
+- Phreatic eruptions
+
+- Near-vent monitoring
+
+- DAS deployments at volcanoes
+
+See [Volcanology](./site/content/resources/volcanology.md).
+
+---
+
+## Applications
+
+DAS is used across many scientific and engineering domains.
+
+This section collects resources organized around real-world DAS applications, including:
+
+- Seismic monitoring
+
+- Volcano monitoring
+
+- Earthquake monitoring
+
+- Geothermal monitoring
+
+- Oil & gas
+
+- Infrastructure
+
+- Transportation
+
+- Structural monitoring
+
+- Ocean and marine applications
+
+- Environmental monitoring
+
+See [Applications](./site/content/resources/applications.md).
+
+---
+
+## Organizations & Communities
+
+Organizations, research groups, conferences, communities, repositories, and other places where DAS research and development can be followed.
+
+See [Organizations & Communities](./site/content/resources/organizations-and-communities.md).
+
+---
+
+## How to Use This List
+
+Awesome DAS is intended to be useful to people at different stages.
+
+### Students
+
+Use the fundamentals, books, courses, and introductory papers to build a foundation.
+
+### Researchers
+
+Use the papers, datasets, software, and application sections to discover research directions and resources.
+
+### Engineers & Developers
+
+Use the software, data formats, datasets, and processing resources to build DAS applications and tooling.
+
+### Educators
+
+Use the curated resources as starting points for teaching DAS, seismology, geophysics, and related topics.
+
+---
+
+## Curation Principles
+
+Awesome DAS follows a few simple principles.
+
+### 1. Quality over quantity
+
+The goal is not to collect every DAS resource available.
+
+Resources should provide meaningful value to the community.
+
+### 2. Relevance
+
+Resources should have a clear connection to Distributed Acoustic Sensing or an important supporting discipline.
+
+### 3. Accessibility
+
+Whenever possible, preference is given to resources that are publicly accessible, open source, or otherwise available to the wider community.
+
+### 4. Accuracy
+
+Links and descriptions should be checked before inclusion.
+
+Broken, obsolete, misleading, or substantially outdated resources may be removed.
+
+### 5. Neutrality
+
+Awesome DAS is intended to be a community resource rather than an endorsement of a particular organization, researcher, software project, or commercial product.
+
+### 6. Sustainable curation
+
+Resources should be organized in a way that remains useful as the DAS ecosystem grows.
+
+---
+
+## Contributing
+
+Contributions are welcome.
+
+You can contribute by:
+
+- Adding a useful resource
+
+- Suggesting a research paper
+
+- Adding a public dataset
+
+- Adding an open-source software project
+
+- Reporting a broken link
+
+- Correcting inaccurate information
+
+- Improving descriptions
+
+- Suggesting new categories
+
+- Improving the documentation
+
+Before contributing, please read [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+---
+
+## Repository Structure
+
+``` markdown
+awesome-das/
+│
+├── resources/       # Curated DAS resources
+├── templates/       # Templates for adding resources
+├── .github/         # GitHub contribution templates
+├── site/            # Future Hugo website
+│
+├── README.md
+├── CONTRIBUTING.md
+├── CODE_OF_CONDUCT.md
+└── LICENSE
+```
+
+The repository is intentionally separated from personal research notes.
+
+Personal research notes, experiments, literature reviews, and research ideas belong in a research notebook rather than this repository.
+
+Awesome DAS focuses on **curated resources that are broadly useful to the DAS community**.
+
+---
+
+## Roadmap
+
+- Create the initial repository
+
+- Establish the resource taxonomy
+
+- Add foundational DAS resources
+
+- Curate important DAS papers
+
+- Curate public DAS datasets
+
+- Curate DAS software and libraries
+
+- Add DAS data formats and interoperability resources
+
+- Build a DAS learning path
+
+- Establish community contribution guidelines
+
+- Build the Awesome DAS website with Hugo
+
+- Add search and filtering
+
+- Add resource metadata
+
+- Grow community contributions
+
+---
+
+## Acknowledgements
+
+Awesome DAS builds upon the work of researchers, engineers, developers, institutions, and open-source communities working in Distributed Acoustic Sensing and related fields.
+
+If you find a resource here useful, please consider supporting the original authors and projects.
+
+---
+
+## License
+
+This project is released under the [MIT License](./LICENSE).
+
+Individual resources referenced by this repository remain subject to their respective licenses and copyrights.
+
+---
+
+**Awesome DAS**  
+_Learn. Research. Build. Share._
