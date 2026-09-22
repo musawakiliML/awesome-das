@@ -18,28 +18,129 @@ The goal is to make it easier for students, researchers, engineers, and practiti
   
 - **[Getting Started](./site/content/get_started/index.md)**
   
-- **[Resources](./site/content//resources/index.md)**
+- **[Resources](./site/content/resources/index.md)**
   
-  - **[Fundamentals](./site/content//resources/fundamentals.md)**
+  - **[Fundamentals](./site/content/resources/fundamentals.md)**
   
-  - **[Books & Courses](./site/content//resources/books-and-courses.md)**
+  - **[Books & Courses](./site/content/resources/books-and-courses.md)**
   
-  - **[Research Papers](./site/content//resources/papers.md)**
+  - **[Research Papers](./site/content/resources/papers.md)**
   
-  - **[Datasets](./site/content//resources/datasets.md)**
+  - **[Datasets](./site/content/resources/datasets.md)**
   
-  - **[Software & Libraries](./site/content//resources/software-and-libraries.md)**
+  - **[Software & Libraries](./site/content/resources/software-and-libraries.md)**
   
-  - **[Data Formats](./site/content//resources/data-formats.md)**
+  - **[Data Formats](./site/content/resources/data-formats.md)**
   
-  - **[Machine Learning](./site/content//resources/machine-learning.md)**
+  - **[Machine Learning](./site/content/resources/machine-learning.md)**
 
-  - **[Deep Learning](./site/content//resources/deep-learning.md)**
+  - **[Deep Learning](./site/content/resources/deep-learning.md)**
   
-  - **[Seismology](./site/content//resources/seismology.md)**
+  - **[Seismology](./site/content/resources/seismology.md)**
   
-  - **[Volcanology](./site/content//resources/volcanology.md)**
+  - **[Volcanology](./site/content/resources/volcanology.md)**
 
-  - **[Applications](./site/content//resources/applications.md)**
+  - **[Applications](./site/content/resources/applications.md)**
   
-  - **[Organizations & Communities](./site/content//resources/organizations-and-commuties.md)**
+  - **[Organizations & Communities](./site/content/resources/organizations-and-commuties.md)**
+
+- **[How to Use This List](./how-to-use-this-list.md)**
+
+- **[Curation Principles](./curation-principles.md)**
+
+- **[Contributing](./CONTRIBUTING.md)**
+  
+- **[Acknowledgements](./acknowledgements.md)**
+  
+- **[License](./LICENSE)**
+
+---
+
+## About
+
+**Distributed Acoustic Sensing (DAS)** uses optical fiber as a dense array of vibration and strain sensors.
+
+DAS has applications across fields including:
+
+- Seismology
+  
+- Volcanology
+
+- Earthquake monitoring
+
+- Geophysics
+
+- Structural health monitoring
+
+- Transportation monitoring
+
+- Oil and gas
+
+- Geothermal systems
+
+- Ocean and marine science
+
+- Environmental monitoring
+
+- Security and infrastructure monitoring
+
+- Machine learning and signal processing
+
+The DAS ecosystem is rapidly developing, with new research papers, datasets, software, and applications appearing regularly.
+
+Awesome DAS aims to provide a structured entry point into this ecosystem.
+
+---
+
+## Getting Started
+
+> New to Distributed Acoustic Sensing?
+
+A useful learning path is:
+
+``` markdown
+
+1. Learn the fundamentals
+        ↓
+2. Understand basic seismology & geophysics
+        ↓
+3. Learn how DAS works
+        ↓
+4. Explore DAS datasets
+        ↓
+5. Learn DAS data formats & processing
+        ↓
+6. Read important DAS research papers
+        ↓
+7. Explore software & analysis tools
+        ↓
+8. Explore machine learning applications
+        ↓
+9. Explore domain-specific applications
+```
+
+Start with:
+
+1. [Fundamentals](./site/content/resources/fundamentals.md)
+
+2. [Books & Courses](./site/content/resources/books-and-courses.md)
+
+3. [Seismology](./site/content/resources/seismology.md)
+
+4. [Research Papers](./site/content/resources/papers.md)
+
+5. [Datasets](./site/content/resources/datasets.md)
+
+6. [Software & Libraries](./site/content/resources/software-and-libraries.md)
+
+If you are specifically interested in DAS for volcano monitoring, continue with:
+
+- [Volcanology](./site/content/resources/volcanology.md)
+
+- [Seismology](./site/content/resources/seismology.md)
+
+- [Machine Learning](./site/content/resources/machine-learning.md)
+
+- [Applications](./site/content/resources/applications.md)
+
+---
