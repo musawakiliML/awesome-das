@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Awesome DAS</title>
+		<link>//localhost:1313/</link>
+		<description>Recent content on Awesome DAS</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title></title>
+				<link>//localhost:1313/resources/applications/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>//localhost:1313/resources/applications/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title></title>
+				<link>//localhost:1313/resources/books-and-courses/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>//localhost:1313/resources/books-and-courses/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title></title>
+				<link>//localhost:1313/resources/data-formats/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>//localhost:1313/resources/data-formats/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title></title>
+				<link>//localhost:1313/resources/datasets/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>//localhost:1313/resources/datasets/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title></title>
+				<link>//localhost:1313/resources/fundamentals/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>//localhost:1313/resources/fundamentals/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title></title>
+				<link>//localhost:1313/resources/machine-learning/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>//localhost:1313/resources/machine-learning/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title></title>
+				<link>//localhost:1313/resources/miscelleneous/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>//localhost:1313/resources/miscelleneous/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title></title>
+				<link>//localhost:1313/resources/organizations-and-commuties/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>//localhost:1313/resources/organizations-and-commuties/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title></title>
+				<link>//localhost:1313/resources/papers/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>//localhost:1313/resources/papers/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title></title>
+				<link>//localhost:1313/resources/seismology/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>//localhost:1313/resources/seismology/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title></title>
+				<link>//localhost:1313/resources/software-and-libraries/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>//localhost:1313/resources/software-and-libraries/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title></title>
+				<link>//localhost:1313/resources/volcanology/</link>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<guid>//localhost:1313/resources/volcanology/</guid>
+				<description></description>
+			</item>
+	</channel>
+</rss>
