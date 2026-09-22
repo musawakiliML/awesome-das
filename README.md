@@ -406,3 +406,29 @@ Awesome DAS is intended to be a community resource rather than an endorsement of
 Resources should be organized in a way that remains useful as the DAS ecosystem grows.
 
 ---
+
+## Contributing
+
+Contributions are welcome.
+
+You can contribute by:
+
+- Adding a useful resource
+
+- Suggesting a research paper
+
+- Adding a public dataset
+
+- Adding an open-source software project
+
+- Reporting a broken link
+
+- Correcting inaccurate information
+
+- Improving descriptions
+
+- Suggesting new categories
+
+- Improving the documentation
+
+Before contributing, please read [CONTRIBUTING.md](./CONTRIBUTING.md).
