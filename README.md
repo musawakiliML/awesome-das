@@ -18,28 +18,40 @@ The goal is to make it easier for students, researchers, engineers, and practiti
   
 - **[Getting Started](./site/content/get_started/index.md)**
   
-- **[Resources](./site/content//resources/index.md)**
+- **[Resources](./site/content/resources/index.md)**
   
-  - **[Fundamentals](./site/content//resources/fundamentals.md)**
+  - **[Fundamentals](./site/content/resources/fundamentals.md)**
   
-  - **[Books & Courses](./site/content//resources/books-and-courses.md)**
+  - **[Books & Courses](./site/content/resources/books-and-courses.md)**
   
-  - **[Research Papers](./site/content//resources/papers.md)**
+  - **[Research Papers](./site/content/resources/papers.md)**
   
-  - **[Datasets](./site/content//resources/datasets.md)**
+  - **[Datasets](./site/content/resources/datasets.md)**
   
-  - **[Software & Libraries](./site/content//resources/software-and-libraries.md)**
+  - **[Software & Libraries](./site/content/resources/software-and-libraries.md)**
   
-  - **[Data Formats](./site/content//resources/data-formats.md)**
+  - **[Data Formats](./site/content/resources/data-formats.md)**
   
-  - **[Machine Learning](./site/content//resources/machine-learning.md)**
+  - **[Machine Learning](./site/content/resources/machine-learning.md)**
 
-  - **[Deep Learning](./site/content//resources/deep-learning.md)**
+  - **[Deep Learning](./site/content/resources/deep-learning.md)**
   
-  - **[Seismology](./site/content//resources/seismology.md)**
+  - **[Seismology](./site/content/resources/seismology.md)**
   
-  - **[Volcanology](./site/content//resources/volcanology.md)**
+  - **[Volcanology](./site/content/resources/volcanology.md)**
 
-  - **[Applications](./site/content//resources/applications.md)**
+  - **[Applications](./site/content/resources/applications.md)**
   
-  - **[Organizations & Communities](./site/content//resources/organizations-and-commuties.md)**
+  - **[Organizations & Communities](./site/content/resources/organizations-and-commuties.md)**
+
+- **[How to Use This List](./how-to-use-this-list.md)**
+
+- **[Curation Principles](./curation-principles.md)**
+
+- **[Contributing](./CONTRIBUTING.md)**
+  
+- **[Acknowledgements](./acknowledgements.md)**
+  
+- **[License](./LICENSE)**
+
+---
