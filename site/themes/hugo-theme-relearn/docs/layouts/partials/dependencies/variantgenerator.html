@@ -1,0 +1,9 @@
+{{- $page := .page }}
+{{- $location := .location }}
+{{- if eq $location "header" }}
+  {{- with $page }}
+    {{- with partial "asset.gotmpl" "/js/variant.js" }}
+    <script src="{{ .RelPermalink }}"></script>
+    {{- end }}
+  {{- end }}
+{{- end }}

@@ -1,0 +1,72 @@
+name: pages-build
+
+# Builds the docs and the exampleSite and pushes them to the `gh-pages` branch.
+# Serving that branch is GitHub's own `pages-build-deployment`, which it
+# generates while the Pages source is "Deploy from a branch" - so the two names
+# read as the pipeline they are, and neither half is this workflow's to rename.
+
+on:
+  # Only main, because that is the only branch this ever publishes from. Branch
+  # pushes used to start a run that skipped immediately; test-execution is what
+  # covers them, building the docs in both the `testing` and `github`
+  # environments.
+  push:
+    branches: [main]
+  workflow_dispatch: # Allow this task to be manually started (you'll never know)
+
+# Declared rather than inherited: deploying pushes the `gh-pages` branch, and a
+# repository whose default token is read-only would fail that push with a 403
+# that looks like a GitHub Pages problem and is not.
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    name: Run deploy
+    runs-on: ubuntu-latest
+    # Deployment happens from main and nowhere else. The previous condition
+    # only constrained the branch for `push`, so a manual dispatch from any
+    # branch would have published that branch to GitHub Pages. Branch builds
+    # are covered by test-execution, which builds the docs in both the `testing`
+    # and `github` environments.
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          # fetch-depth: 0   # Fetch all history for .GitInfo and .Lastmod - not necessary for this repo
+
+      - name: Build site
+        uses: ./.github/actions/build-site
+
+      # build-site writes outside the workspace; stage it somewhere predictable
+      # rather than relying on the uploader to accept a path above the root.
+      #
+      # These two steps come before the deployment so that a failed deploy
+      # still leaves an artifact to inspect - which is exactly when one is
+      # wanted. They are continue-on-error because the reverse must not hold:
+      # steps carry an implicit success(), so without it a flaky upload would
+      # skip the deployment, letting a convenience block the whole point of
+      # the workflow.
+      - name: Stage the built site artifact
+        continue-on-error: true
+        shell: bash
+        run: cp -r "${GITHUB_WORKSPACE}/../public" "${RUNNER_TEMP}/site"
+
+      # The workflow name keeps archives from the two publishing workflows
+      # apart on disk. The run number is the value shown in the Actions UI;
+      # the run id is the one in the run's URL, so an archive can be traced
+      # straight back to github.com/.../actions/runs/<run id>.
+      - name: Upload the built site artifact
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.workflow }}-${{ github.run_number }}-${{ github.run_id }}
+          path: ${{ runner.temp }}/site
+          retention-days: 30
+
+      - name: Deploy site
+        uses: ./.github/actions/deploy-site
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
